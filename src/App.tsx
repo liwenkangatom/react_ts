@@ -1,5 +1,5 @@
-import React from 'react';
-import './App.css';
+import React from "react";
+import "./App.less";
 
 const App: React.FC = () => {
   return (
@@ -7,6 +7,6 @@ const App: React.FC = () => {
       <h2>初始化该页面</h2>
     </div>
   );
-}
+};
 
 export default App;

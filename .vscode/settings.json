@@ -3,10 +3,13 @@
     "Interop",
     "antialiased",
     "browserslist",
+    "devtools",
     "esnext",
     "onstatechange",
     "onupdatefound",
     "precached",
+    "todos",
+    "typesafe",
     "unmount",
     "webfonts"
   ]

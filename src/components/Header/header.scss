@@ -1,0 +1,26 @@
+nav {
+  height: 100%;
+  border-top: #060 2px solid;
+  border-bottom: #060 2px solid;
+  background-color: #690;
+}
+
+nav ul {
+  list-style: none;
+  margin-left: 50px;
+}
+
+nav li {
+  display: inline;
+  line-height: 40px;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  padding: 20px 20px;
+}
+
+nav a:hover {
+  background-color: #060;
+}

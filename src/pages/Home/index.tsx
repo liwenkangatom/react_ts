@@ -7,7 +7,7 @@ export class Home extends React.Component<IHomeProps> {
   public render() {
     return (
       <div>
-        <h2>Home</h2>
+        <h2>Home page</h2>
       </div>
     );
   }

@@ -1,33 +1,23 @@
-import { Link } from "react-router-dom";
+import React, { Component } from "react";
+import { Router, Route } from "react-router-dom";
+import { createBrowserHistory } from "history";
+
 import "./App.scss";
 
-import * as React from "react";
+import { About, Inbox, Home } from "./pages";
+import { Header } from "./components";
 
-export interface IAppProps {}
+const history = createBrowserHistory();
 
-export interface IAppState {}
-
-export default class App extends React.Component<IAppProps, IAppState> {
-  constructor(props: IAppProps) {
-    super(props);
-
-    this.state = {};
-  }
-
+export default class App extends Component {
   public render() {
     return (
-      <div>
-        <h1>App</h1>
-        {/* 把 <a> 变成 <Link> */}
-        <ul>
-          <li>
-            <Link to="/about">About</Link>
-          </li>
-          <li>
-            <Link to="/inbox">Inbox</Link>
-          </li>
-        </ul>
-      </div>
+      <Router history={history}>
+        <Header />
+        <Route exact path="/" component={Home} />
+        <Route path="/About" component={About} />
+        <Route path="/inbox" component={Inbox} />
+      </Router>
     );
   }
 }

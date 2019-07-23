@@ -23,7 +23,7 @@ export default combineReducers<TodosState, TodosAction>({
       case getType(actions.toggle):
         return state.map(
           item =>
-            item.id === action.payload
+            item.id === action.payload.id
               ? { ...item, completed: !item.completed }
               : item
         );

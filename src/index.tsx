@@ -1,25 +1,17 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { Router, Route } from "react-router-dom";
-import { createBrowserHistory } from "history";
 import { Provider } from "react-redux";
-import { createStore } from "redux";
 import "./index.scss";
 
-
+import store from "./store";
 import App from "./App";
-import { About, Inbox } from "./pages";
 
 import * as serviceWorker from "./serviceWorker";
 
-const history = createBrowserHistory();
-const store = createStore();
 ReactDOM.render(
-  <Router history={history}>
-    <Route path="/" component={App} />
-    <Route path="/about" component={About} />
-    <Route path="/inbox" component={Inbox} />
-  </Router>,
+  <Provider store={store}>
+    <App />
+  </Provider>,
   document.getElementById("root")
 );
 

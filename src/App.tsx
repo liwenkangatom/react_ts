@@ -4,7 +4,7 @@ import { createBrowserHistory } from "history";
 
 import "./App.scss";
 
-import { About, Inbox, Home } from "./pages";
+import { About, Inbox, HomeConnected as Home } from "./pages";
 import { Header } from "./components";
 
 const history = createBrowserHistory();

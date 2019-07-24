@@ -2,6 +2,7 @@ import { combineReducers } from "redux";
 import { ActionType, getType } from "typesafe-actions";
 import { Todo, TodosFilter } from "./models";
 import * as actions from "./actions";
+import { ADD, TOGGLE, CHANGE_FILTER } from "./constants";
 
 export type TodosAction = ActionType<typeof actions>;
 
@@ -11,22 +12,17 @@ export type TodosState = Readonly<{
 }>;
 const initialState: TodosState = {
   todos: [],
-  todosFilter: TodosFilter.All,
+  todosFilter: TodosFilter.All
 };
 // combine函数泛型为state, action增加类型判断
 export default combineReducers<TodosState, TodosAction>({
   todos: (state = initialState.todos, action) => {
     switch (action.type) {
-      case getType(actions.add):
+      case ADD:
         return [...state, action.payload];
 
-      case getType(actions.toggle):
-        return state.map(
-          item =>
-            item.id === action.payload.id
-              ? { ...item, completed: !item.completed }
-              : item
-        );
+      case TOGGLE:
+        return state;
 
       default:
         return state;
@@ -34,7 +30,7 @@ export default combineReducers<TodosState, TodosAction>({
   },
   todosFilter: (state = initialState.todosFilter, action) => {
     switch (action.type) {
-      case getType(actions.changeFilter):
+      case CHANGE_FILTER:
         return action.payload;
 
       default:

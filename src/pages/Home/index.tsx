@@ -1,7 +1,7 @@
-import Types from "MyTypes";
 import * as React from "react";
 import { bindActionCreators, Dispatch } from "redux";
 import { connect } from "react-redux";
+import Types from "MyTypes";
 import { todosActions, todosSelectors } from "../../features/todos";
 
 const mapStateToProps = (state: Types.RootState) => ({

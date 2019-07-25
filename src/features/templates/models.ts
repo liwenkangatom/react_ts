@@ -26,6 +26,11 @@ export type Item<T = TextItemPropData> = {
   positionData: ItemPosition;
   propData?: T;
 }
+export type templateContext = {
+  templateKey: string;
+  sectionKey: string;
+  itemKey: string;
+}
 export type ItemPosition = {
   x: number;
   y: number;

@@ -1,0 +1,47 @@
+$mainColor: #8fdadc;
+
+.templateGenerator {
+  width: 100%;
+  height: 100%;
+}
+
+.sidebar {
+  width: 100px;
+  height: 100%;
+  float: left;
+  background-color: $mainColor;
+}
+
+.mainContent {
+  width: calc(100% - 100px);
+  height: 100%;
+  float: left;
+  background-color: bisque;
+}
+
+.header {
+  width: 100%;
+  height: 50px;
+  background-color: blueviolet;
+}
+
+.editContent {
+  width: 100%;
+  height: calc(100% - 50px);
+}
+
+
+
+.pageContent {
+  width: 400px;
+  height: 100%;
+  float: left;
+  background-color: cornflowerblue;
+}
+
+.sideNav {
+  width: 100px;
+  height: 100%;
+  float: right;
+  background-color: darkgray;
+}

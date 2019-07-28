@@ -1,11 +1,10 @@
-import * as React from 'react';
+import * as React from "react";
 import { Link } from "react-router-dom";
 
-import "./header.scss"
-export interface IHeaderProps {
-}
+import "./header.scss";
+export interface IHeaderProps {}
 
-export function Header (props: IHeaderProps) {
+export function Header(props: IHeaderProps) {
   return (
     <div>
       <header>
@@ -20,10 +19,12 @@ export function Header (props: IHeaderProps) {
             <li>
               <Link to="/inbox">Inbox</Link>
             </li>
+            <li>
+              <Link to="/templateGenerator">templateGenerator</Link>
+            </li>
           </ul>
         </nav>
       </header>
     </div>
   );
 }
-

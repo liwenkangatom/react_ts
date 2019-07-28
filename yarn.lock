@@ -9816,8 +9816,8 @@ typedarray@^0.0.6:
 
 typesafe-actions@^4.4.2:
   version "4.4.2"
-  resolved "https://registry.npm.taobao.org/typesafe-actions/download/typesafe-actions-4.4.2.tgz#8f817c479d12130b5ebb442032968b2a18929e1a"
-  integrity sha1-j4F8R50SEwteu0QgMpaLKhiSnho=
+  resolved "https://registry.npmjs.org/typesafe-actions/-/typesafe-actions-4.4.2.tgz#8f817c479d12130b5ebb442032968b2a18929e1a"
+  integrity sha512-QW61P4cOX8dCNmrfpcUMjvU/MF/sFTC8/PlG9215W1gKDzZUBjRGdyYSO6ZcEUNsn491S2VpryJOHSIVSDqJrg==
 
 typescript@3.4.5:
   version "3.4.5"

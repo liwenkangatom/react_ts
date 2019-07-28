@@ -4,7 +4,12 @@ import { createBrowserHistory } from "history";
 
 import "./App.scss";
 
-import { AboutConnected as About, Inbox, HomeConnected as Home } from "./pages";
+import {
+  AboutConnected as About,
+  Inbox,
+  HomeConnected as Home,
+  TemplateGenerator
+} from "./pages";
 import { Header } from "./components";
 
 const history = createBrowserHistory();
@@ -14,9 +19,12 @@ export default class App extends Component {
     return (
       <Router history={history}>
         <Header />
-        <Route exact path="/" component={Home} />
-        <Route path="/About" component={About} />
-        <Route path="/inbox" component={Inbox} />
+        <div className="mainContainer">
+          <Route exact path="/" component={Home} />
+          <Route path="/About" component={About} />
+          <Route path="/inbox" component={Inbox} />
+          <Route path="/templateGenerator" component={TemplateGenerator} />
+        </div>
       </Router>
     );
   }

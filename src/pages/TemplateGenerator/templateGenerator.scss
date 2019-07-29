@@ -86,16 +86,22 @@ $sideContentWidth: 198px;
 }
 
 .buttonList {
+
   width: 100%;
   height: 70px;
-  border: #2D2D2D 1px solid;
 }
 
 .itemButton {
+  margin-top: 16px;
   width: 75px;
-  height: 100%;
+  height: calc(100% - 14px);
   float: left;
+  text-align: center;
   background-color: $greyBackColor2;
+  font-size: 8px;
+  font-family: Roboto-Regular;
+  font-weight: 400;
+  color: rgba(70, 70, 70, 1);
 }
 
 .tipsList {
@@ -120,4 +126,10 @@ $sideContentWidth: 198px;
   @extend .modular;
   width: 150px;
   margin-left: 2px;
+}
+
+.splitLine {
+  width: 100%;
+  height: 1px;
+  background: rgba(209, 209, 209, 1);
 }

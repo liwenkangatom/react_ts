@@ -3,16 +3,10 @@ import _ from "lodash";
 import { Responsive, WidthProvider } from "react-grid-layout";
 import getEditContainer from "../EditContainer/index";
 import { TemplateTextControl, TemplateTextPropControl } from "../index";
-import { connect } from "react-redux";
-import {
-  AddItem,
-  DeleteItem,
-  UpdateItemPosition,
-  UpdateItemProps
-} from "../../../redux/action.js";
+
 import "./index.css";
 const ResponsiveReactGridLayout = WidthProvider(Responsive);
-class TemplateEditPage extends PureComponent {
+export class TemplateEditPage extends PureComponent {
   static defaultProps = {
     className: "layout",
     cols: { lg: 3, md: 8, sm: 6, xs: 1, xxs: 2 },
@@ -21,7 +15,7 @@ class TemplateEditPage extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      items: [0, 1, 2].map(function (i, key, list) {
+      items: [0, 1, 2].map(function(i, key, list) {
         return {
           i: i.toString(),
           x: i * 2,
@@ -41,19 +35,17 @@ class TemplateEditPage extends PureComponent {
   }
 
   createElement = item => {
-    //     key: guid(),
-    // type: action.data.type,
-    // positionData: action.data.positionData,
-    // propData: {}
     const i = item.key;
-    // let elementType = item.type;
     const EditContainer = getEditContainer(
       TemplateTextControl,
       TemplateTextPropControl
     );
     return (
       <div key={i} data-grid={item.positionData}>
-        <EditContainer deleteChild={() => this.onRemoveItem(i)} propData={item.propData} />
+        <EditContainer
+          deleteChild={() => this.onRemoveItem(i)}
+          propData={item.propData}
+        />
       </div>
     );
   };
@@ -88,7 +80,7 @@ class TemplateEditPage extends PureComponent {
 
   onRemoveItem = i => {
     console.log("removing", i);
-    const { sectionKey } = this.props
+    const { sectionKey } = this.props;
     this.props.DeleteItem({
       key: i,
       sectionKey
@@ -112,12 +104,3 @@ class TemplateEditPage extends PureComponent {
     );
   }
 }
-const mapStateToProps = state => {
-  return {};
-};
-export default connect(mapStateToProps, {
-  AddItem,
-  DeleteItem,
-  UpdateItemPosition,
-  UpdateItemProps
-})(TemplateEditPage);

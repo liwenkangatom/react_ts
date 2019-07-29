@@ -8,7 +8,7 @@ import {
   AboutConnected as About,
   Inbox,
   HomeConnected as Home,
-  TemplateGenerator
+  TemplateGeneratorConnected as TemplateGenerator
 } from "./pages";
 import { Header } from "./components";
 

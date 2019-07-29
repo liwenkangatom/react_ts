@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/anchor-has-content */
 import React, { Component } from "react";
-import TemplateEditPage from "../TemplateEditPage";
+import { TemplateEditPage } from "../TemplateEditPage";
 import "./index.css";
 export class TemplateSection extends Component {
   constructor(props) {
@@ -12,7 +12,7 @@ export class TemplateSection extends Component {
     };
   }
   render() {
-    const { sectionName, sectionKey, isSelected, items } = this.props;
+    const { sectionName, sectionKey, isSelected } = this.props;
     return (
       <div
         className={isSelected ? "templateSection_Selected" : "templateSection"}
@@ -26,7 +26,7 @@ export class TemplateSection extends Component {
           </div>
         </div>
         <div className="sectionBody">
-          <TemplateEditPage items={items} sectionKey={sectionKey} />
+          <TemplateEditPage sectionKey={sectionKey} />
         </div>
       </div>
     );

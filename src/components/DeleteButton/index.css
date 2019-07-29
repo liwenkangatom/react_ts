@@ -1,0 +1,14 @@
+.deleteButton {
+width:8px;
+height:8px;
+background:rgba(30,157,252,1);
+border-radius:1px;
+float: right;
+cursor: pointer;
+}
+.icon {
+  width: 6px;
+  height: 6px;
+  padding:0; 
+  border:0;
+}

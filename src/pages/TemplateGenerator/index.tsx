@@ -1,4 +1,9 @@
 import * as React from "react";
+import { connect } from "react-redux";
+import { bindActionCreators, Dispatch } from "redux";
+import Types from "MyTypes";
+import { templateActions } from "../../features/templates";
+
 import "./templateGenerator.scss";
 import TextIcon from "../../images/Text.png";
 import RadioIcon from "../../images/Radio.png";
@@ -12,20 +17,28 @@ import HandwrittenIcon from "../../images/Handwritten.png";
 import SaveIcon from "../../images/save.png";
 import ShareIcon from "../../images/share.png";
 
-import { TemplateSectionNavConnected } from "../../components";
+import { TemplateSectionNavConnected, TemplateSection } from "../../components";
+const mapStateToProps = (state: Types.RootState) => ({
+  sections: state.template.sections
+});
 
-export interface ITemplateGeneratorProps {}
-
-export interface ITemplateGeneratorState {}
+const mapDispatchToProps = (dispatch: Dispatch<Types.RootAction>) =>
+  bindActionCreators(
+    {
+      addSection: templateActions.addSection,
+      deleteSection: templateActions.deleteSection,
+      selectSection: templateActions.selectSection
+    },
+    dispatch
+  );
+type ITemplateGeneratorProps = ReturnType<typeof mapStateToProps> &
+  ReturnType<typeof mapDispatchToProps>;
 
 export class TemplateGenerator extends React.Component<
-  ITemplateGeneratorProps,
-  ITemplateGeneratorState
+  ITemplateGeneratorProps
 > {
   constructor(props: ITemplateGeneratorProps) {
     super(props);
-
-    this.state = {};
   }
 
   public render() {
@@ -93,39 +106,23 @@ export class TemplateGenerator extends React.Component<
             <div className="pageContent">
               <div className="page">
                 <div className="pageDisplay">
-                  <h1>1</h1>
-                  <h1>Hello</h1>
-                  <h1>Hello</h1>
-                  <h1>Hello</h1>
-                  <h1>Hello</h1>
-                  <h1>Hello</h1>
-                  <h1>Hello</h1>
-                  <h1>Hello</h1>
-                  <h1>Hello</h1>
-                  <h1>Hello</h1>
-                  <h1>Hello</h1>
-                  <h1>Hello</h1>
-                  <h1>Hello</h1>
-                  <h1>Hello</h1>
-                  <h1>Hello</h1>
-                  <h1>Hello</h1>
-                  <h1>Hello</h1>
-                  <h1>Hello</h1>
-                  <h1>Hello</h1>
-                  <h1>Hello</h1>
-                  <h1>Hello</h1>
-                  <h1>Hello</h1>
-                  <h1>Hello</h1>
-                  <h1>Hello</h1>
-                  <h1>Hello</h1>
-                  <h1>Hello</h1>
-                  <h1>end</h1>
+                  {this.props.sections.map(section => {
+                    const { key, sectionName, sectionOrder } = section;
+                    return (
+                      <TemplateSection
+                        key={key}
+                        sectionName={sectionName}
+                        id={sectionOrder}
+                        sectionKey={key}
+                      />
+                    );
+                  })}
                 </div>
               </div>
             </div>
             <div className="sideNav">
               <div className="sideContent">
-                <div className="sectionTitle">
+                <div className="sectionNavTitle">
                   Section
                   <div className="sectionLine" />
                 </div>
@@ -142,3 +139,7 @@ export class TemplateGenerator extends React.Component<
     );
   }
 }
+export const TemplateGeneratorConnected = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(TemplateGenerator);

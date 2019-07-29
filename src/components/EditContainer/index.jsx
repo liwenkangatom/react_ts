@@ -1,6 +1,6 @@
 import React, { PureComponent } from "react";
 import "./index.scss";
-import { DeleteButton, EditButton } from "../../common";
+import { DeleteButton, EditButton } from "../index";
 const getEditContainer = (Control, PropControl) => {
   return class extends PureComponent {
     constructor(props) {

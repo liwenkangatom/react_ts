@@ -69,7 +69,15 @@ $sideContentWidth: 198px;
   width: 672px;
   height: 100%;
   margin-left: 148px;
+  overflow: hidden;
   background-color: $wite;
+}
+
+.pageDisplay {
+  width: 692px;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 .sideNav {
@@ -155,5 +163,13 @@ $sideContentWidth: 198px;
 
 .sectionList {
   width: 100%;
-  height: calc(100% - 46px);
+  height: calc(100% - 50px);
+  overflow: hidden;
+}
+
+.sectionDisplay {
+  width: calc(100% + 20px);
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }

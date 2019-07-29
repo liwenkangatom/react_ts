@@ -89,7 +89,37 @@ export class TemplateGenerator extends React.Component<
           </div>
           <div className="editContent">
             <div className="pageContent">
-              <div className="page" />
+              <div className="page">
+                <div className="pageDisplay">
+                  <h1>1</h1>
+                  <h1>Hello</h1>
+                  <h1>Hello</h1>
+                  <h1>Hello</h1>
+                  <h1>Hello</h1>
+                  <h1>Hello</h1>
+                  <h1>Hello</h1>
+                  <h1>Hello</h1>
+                  <h1>Hello</h1>
+                  <h1>Hello</h1>
+                  <h1>Hello</h1>
+                  <h1>Hello</h1>
+                  <h1>Hello</h1>
+                  <h1>Hello</h1>
+                  <h1>Hello</h1>
+                  <h1>Hello</h1>
+                  <h1>Hello</h1>
+                  <h1>Hello</h1>
+                  <h1>Hello</h1>
+                  <h1>Hello</h1>
+                  <h1>Hello</h1>
+                  <h1>Hello</h1>
+                  <h1>Hello</h1>
+                  <h1>Hello</h1>
+                  <h1>Hello</h1>
+                  <h1>Hello</h1>
+                  <h1>end</h1>
+                </div>
+              </div>
             </div>
             <div className="sideNav">
               <div className="sideContent">
@@ -97,7 +127,30 @@ export class TemplateGenerator extends React.Component<
                   Section
                   <div className="sectionLine" />
                 </div>
-                <div className="sectionList" />
+                <div className="sectionList">
+                  <div className="sectionDisplay">
+                    <h2>start</h2>
+                    <h2>hello</h2>
+                    <h2>hello</h2>
+                    <h2>hello</h2>
+                    <h2>hello</h2>
+                    <h2>hello</h2>
+                    <h2>hello</h2>
+                    <h2>hello</h2>
+                    <h2>hello</h2>
+                    <h2>hello</h2>
+                    <h2>hello</h2>
+                    <h2>hello</h2>
+                    <h2>hello</h2>
+                    <h2>hello</h2>
+                    <h2>hello</h2>
+                    <h2>hello</h2>
+                    <h2>hello</h2>
+                    <h2>hello</h2>
+                    <h2>hello</h2>
+                    <h2>end</h2>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

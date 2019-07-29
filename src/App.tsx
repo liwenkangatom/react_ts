@@ -18,12 +18,11 @@ export default class App extends Component {
   public render() {
     return (
       <Router history={history}>
-        <Header />
         <div className="mainContainer">
-          <Route exact path="/" component={Home} />
+          <Route path="/home" component={Home} />
           <Route path="/About" component={About} />
           <Route path="/inbox" component={Inbox} />
-          <Route path="/templateGenerator" component={TemplateGenerator} />
+          <Route exact path="/" component={TemplateGenerator} />
         </div>
       </Router>
     );

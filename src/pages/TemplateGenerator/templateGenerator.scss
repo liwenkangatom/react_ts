@@ -1,4 +1,18 @@
-$mainColor: #8fdadc;
+$mainColor: #339CE6;
+$backColor: #EBEBEB;
+$wite: #ffffff;
+
+$greyBackColor1: #D6D4D4;
+$greyBackColor2: #F7F7F7;
+$greyBackColor3: #EBECF2;
+
+$blackFontColor: #2D2D2D;
+$greyFontColor: #464646;
+$greyFontColor2: #949599;
+
+$sideWidth: 184px;
+$topWidth: 140px;
+$sideContentWidth: 198px;
 
 .templateGenerator {
   width: 100%;
@@ -6,42 +20,104 @@ $mainColor: #8fdadc;
 }
 
 .sidebar {
-  width: 100px;
+  width: $sideWidth;
   height: 100%;
   float: left;
   background-color: $mainColor;
 }
 
 .mainContent {
-  width: calc(100% - 100px);
+  width: calc(100% - #{$sideWidth});
   height: 100%;
   float: left;
-  background-color: bisque;
+  background-color: $backColor;
 }
 
 .header {
   width: 100%;
-  height: 50px;
-  background-color: blueviolet;
+  height: $topWidth;
+  background-color: $greyBackColor2;
+}
+
+.topBar {
+  width: 100%;
+  height: 52px;
+  background-color: $greyBackColor1;
+}
+
+.manual {
+  width: 830px;
+  height: calc(100% - 52px);
+  margin-left: 148px;
 }
 
 .editContent {
   width: 100%;
-  height: calc(100% - 50px);
+  height: calc(100% - #{$topWidth});
 }
 
 
 
 .pageContent {
-  width: 400px;
-  height: 100%;
+  width: calc(100% - #{$sideContentWidth});
+  height: calc(100% - 10px);
+  padding-top: 10px;
   float: left;
-  background-color: cornflowerblue;
+}
+
+.page {
+  width: 672px;
+  height: 100%;
+  margin-left: 148px;
+  background-color: $wite;
 }
 
 .sideNav {
-  width: 100px;
+  width: $sideContentWidth;
   height: 100%;
   float: right;
-  background-color: darkgray;
+}
+
+.sideContent {
+  width: 168px;
+  margin-top: 10px;
+  height: calc(100% - 20px);
+  background-color: $wite;
+}
+
+.buttonList {
+  width: 100%;
+  height: 70px;
+  border: #2D2D2D 1px solid;
+}
+
+.itemButton {
+  width: 75px;
+  height: 100%;
+  float: left;
+  background-color: $greyBackColor2;
+}
+
+.tipsList {
+  width: 100%;
+  height: 16px;
+  color: $greyFontColor2;
+}
+
+.modular {
+  height: 100%;
+  width: 675px;
+  background-color: $greyBackColor3;
+  font-size: 8px;
+  float: left;
+  font-family: Roboto-Regular;
+  font-weight: 400;
+  text-align: center;
+  color: rgba(148, 149, 153, 1);
+}
+
+.func {
+  @extend .modular;
+  width: 150px;
+  margin-left: 2px;
 }

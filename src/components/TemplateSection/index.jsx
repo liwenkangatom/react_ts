@@ -20,7 +20,7 @@ export class TemplateSection extends Component {
       >
         <div className="sectionHeader">
           <div className="sectionTitleIcon" />
-          <a id={sectionName} href="#" />
+          <a id={sectionKey} href="#" />
           <div className="sectionTitle">
             {sectionName}
           </div>

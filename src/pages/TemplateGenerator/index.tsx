@@ -106,6 +106,9 @@ export class TemplateGenerator extends React.Component<
             <div className="pageContent">
               <div className="page">
                 <div className="pageDisplay">
+                  <div className="templatePageHeader">
+                    <div className="templateTittle">Template1</div>
+                  </div>
                   {this.props.sections.map(section => {
                     const { key, sectionName, sectionOrder } = section;
                     return (

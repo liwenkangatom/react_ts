@@ -12,6 +12,8 @@ import HandwrittenIcon from "../../images/Handwritten.png";
 import SaveIcon from "../../images/save.png";
 import ShareIcon from "../../images/share.png";
 
+import { TemplateSectionNavConnected } from "../../components";
+
 export interface ITemplateGeneratorProps {}
 
 export interface ITemplateGeneratorState {}
@@ -129,26 +131,7 @@ export class TemplateGenerator extends React.Component<
                 </div>
                 <div className="sectionList">
                   <div className="sectionDisplay">
-                    <h2>start</h2>
-                    <h2>hello</h2>
-                    <h2>hello</h2>
-                    <h2>hello</h2>
-                    <h2>hello</h2>
-                    <h2>hello</h2>
-                    <h2>hello</h2>
-                    <h2>hello</h2>
-                    <h2>hello</h2>
-                    <h2>hello</h2>
-                    <h2>hello</h2>
-                    <h2>hello</h2>
-                    <h2>hello</h2>
-                    <h2>hello</h2>
-                    <h2>hello</h2>
-                    <h2>hello</h2>
-                    <h2>hello</h2>
-                    <h2>hello</h2>
-                    <h2>hello</h2>
-                    <h2>end</h2>
+                    <TemplateSectionNavConnected />
                   </div>
                 </div>
               </div>

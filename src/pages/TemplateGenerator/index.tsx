@@ -92,7 +92,13 @@ export class TemplateGenerator extends React.Component<
               <div className="page" />
             </div>
             <div className="sideNav">
-              <div className="sideContent" />
+              <div className="sideContent">
+                <div className="sectionTitle">
+                  Section
+                  <div className="sectionLine" />
+                </div>
+                <div className="sectionList" />
+              </div>
             </div>
           </div>
         </div>

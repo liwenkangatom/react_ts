@@ -81,6 +81,7 @@ $sideContentWidth: 198px;
 .sideContent {
   width: 168px;
   margin-top: 10px;
+  border: 1px solid #ffffff;
   height: calc(100% - 20px);
   background-color: $wite;
 }
@@ -132,4 +133,27 @@ $sideContentWidth: 198px;
   width: 100%;
   height: 1px;
   background: rgba(209, 209, 209, 1);
+}
+
+.sectionTitle {
+  width: 100%;
+  height: 35px;
+  margin-top: 17px;
+  text-align: center;
+  font-size: 15px;
+  font-family: Roboto-Regular;
+  font-weight: 400;
+  color: rgba(45, 45, 45, 1);
+}
+
+.sectionLine {
+  width: 144px;
+  height: 1px;
+  margin: 10px auto 0px auto;
+  background: rgba(235, 235, 235, 1);
+}
+
+.sectionList {
+  width: 100%;
+  height: calc(100% - 46px);
 }

@@ -1,0 +1,17 @@
+.textLabel{
+    margin: 5px;
+    vertical-align: middle;
+}
+
+.textSign{
+    margin: 5px;
+    color: blue;
+    font-size: 18px;
+    vertical-align: middle;
+}
+
+.textInput{
+    margin: 5px;
+    vertical-align: middle;
+}
+

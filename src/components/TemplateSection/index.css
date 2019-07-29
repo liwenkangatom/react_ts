@@ -1,0 +1,42 @@
+.templateSection {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.templateSection_Selected {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  border: 1px dashed rgba(30, 157, 252, 1);
+}
+
+.sectionHeader {
+  width: 100%;
+  height: 21px;
+}
+
+.sectionTitle {
+  float: left;
+  width: 49px;
+  height: 9px;
+  font-size: 12px;
+  font-family: Roboto-Bold;
+  font-weight: bold;
+  margin-left: 8px;
+  color: rgba(45, 45, 45, 1);
+}
+
+.sectionBody {
+  width: 100%;
+  height: 100%;
+}
+
+.sectionTitleIcon {
+  float: left;
+  width: 4px;
+  height: 21px;
+  background: rgba(30, 157, 252, 1);
+  border-radius: 2px;
+}

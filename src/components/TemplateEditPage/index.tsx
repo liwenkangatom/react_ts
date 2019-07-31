@@ -1,18 +1,50 @@
 import React, { PureComponent } from "react";
-import _ from "lodash";
+import Types from "MyTypes";
+import { connect } from "react-redux";
+import { bindActionCreators, Dispatch } from "redux";
 import { Responsive, WidthProvider } from "react-grid-layout";
 import getEditContainer from "../EditContainer/index";
 import { TemplateTextControl, TemplateTextPropControl } from "../index";
+import { templateActions } from "../../features/templates";
+import { Item } from "../../features/templates/models";
 
 import "./index.css";
 const ResponsiveReactGridLayout = WidthProvider(Responsive);
-export class TemplateEditPage extends PureComponent {
+
+const mapStateToProps = (state: Types.RootState) => ({
+  sections: state.template.sections,
+  templateContext: state.template.templateContext,
+  items: state.template.items
+});
+
+const mapDispatchToProps = (dispatch: Dispatch<Types.RootAction>) =>
+  bindActionCreators(
+    {
+      addSection: templateActions.addSection,
+      deleteSection: templateActions.deleteSection,
+      selectSection: templateActions.selectSection,
+      addItem: templateActions.addItem
+    },
+    dispatch
+  );
+type TemplateEditPageProps = ReturnType<typeof mapStateToProps> &
+  ReturnType<typeof mapDispatchToProps> & {
+    cols: {
+      lg: number;
+      md: number;
+      sm: number;
+      xs: number;
+      xxs: number;
+    };
+    rowHeight: number;
+  };
+export class TemplateEditPage extends PureComponent<TemplateEditPageProps> {
   static defaultProps = {
     className: "layout",
     cols: { lg: 3, md: 8, sm: 6, xs: 1, xxs: 2 },
     rowHeight: 40
   };
-  constructor(props) {
+  constructor(props: Readonly<TemplateEditPageProps>) {
     super(props);
     this.state = {
       items: [0, 1, 2].map(function(i, key, list) {
@@ -27,14 +59,11 @@ export class TemplateEditPage extends PureComponent {
       }),
       newCounter: 0
     };
-
-    this.cache = [];
-
     this.onAddItem = this.onAddItem.bind(this);
     this.onBreakpointChange = this.onBreakpointChange.bind(this);
   }
 
-  createElement = item => {
+  createElement = (item: Item) => {
     const i = item.key;
     const EditContainer = getEditContainer(
       TemplateTextControl,
@@ -50,24 +79,24 @@ export class TemplateEditPage extends PureComponent {
     );
   };
 
-  onAddItem() {
-    this.setState({
-      // Add a new item. It must have a unique key!
-      items: this.state.items.concat({
-        i: "n" + this.state.newCounter,
-        x: this.state.items.length * 2 % (this.state.cols || 12),
-        y: Infinity, // puts it at the bottom
-        w: 3,
-        h: 1,
-        type: "Text"
-      }),
-      // Increment the counter to ensure key is always unique.
-      newCounter: this.state.newCounter + 1
-    });
-  }
+  // onAddItem() {
+  //   this.setState({
+  //     // Add a new item. It must have a unique key!
+  //     items: this.state.items.concat({
+  //       i: "n" + this.state.newCounter,
+  //       x: this.state.items.length * 2 % (this.state.cols || 12),
+  //       y: Infinity, // puts it at the bottom
+  //       w: 3,
+  //       h: 1,
+  //       type: "Text"
+  //     }),
+  //     // Increment the counter to ensure key is always unique.
+  //     newCounter: this.state.newCounter + 1
+  //   });
+  // }
 
   // We're using the cols coming back from this to calculate where to add new items.
-  onBreakpointChange(breakpoint, cols) {
+  onBreakpointChange(breakpoint: string, cols: number) {
     this.setState({
       breakpoint: breakpoint,
       cols: cols
@@ -98,7 +127,7 @@ export class TemplateEditPage extends PureComponent {
           draggableHandle={".dragHandler"}
           {...this.props}
         >
-          {_.map(items, item => this.createElement(item))}
+          {items.map(item => this.createElement(item))}
         </ResponsiveReactGridLayout>
       </div>
     );

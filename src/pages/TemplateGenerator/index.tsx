@@ -18,8 +18,10 @@ import SaveIcon from "../../images/save.png";
 import ShareIcon from "../../images/share.png";
 
 import { TemplateSectionNavConnected, TemplateSection } from "../../components";
+import { ItemType } from "../../features/templates/models";
 const mapStateToProps = (state: Types.RootState) => ({
-  sections: state.template.sections
+  sections: state.template.sections,
+  templateContext: state.template.templateContext
 });
 
 const mapDispatchToProps = (dispatch: Dispatch<Types.RootAction>) =>
@@ -27,7 +29,8 @@ const mapDispatchToProps = (dispatch: Dispatch<Types.RootAction>) =>
     {
       addSection: templateActions.addSection,
       deleteSection: templateActions.deleteSection,
-      selectSection: templateActions.selectSection
+      selectSection: templateActions.selectSection,
+      addItem: templateActions.addItem
     },
     dispatch
   );
@@ -40,7 +43,13 @@ export class TemplateGenerator extends React.Component<
   constructor(props: ITemplateGeneratorProps) {
     super(props);
   }
-
+  addText = () => {
+    const { templateContext } = this.props;
+    const curSectionKey = templateContext.sectionKey;
+    if (curSectionKey !== "") {
+      this.props.addItem(curSectionKey, ItemType.TextItem);
+    }
+  };
   public render() {
     return (
       <div className="templateGenerator">
@@ -50,9 +59,9 @@ export class TemplateGenerator extends React.Component<
             <div className="topBar" />
             <div className="manual">
               <div className="buttonList">
-                <div className="itemButton">
+                <div className="itemButton" onClick={this.addText}>
                   <img src={TextIcon} alt="Icon" />
-                  <div className="menu-text"> Text </div>
+                  <div className="menu-text">Text</div>
                 </div>
                 <div className="itemButton">
                   <img src={RadioIcon} alt="Icon" />

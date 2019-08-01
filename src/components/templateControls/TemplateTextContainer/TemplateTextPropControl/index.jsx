@@ -52,26 +52,25 @@ export class TemplateTextPropControl extends Component {
           okText="Confirm"
           width="400px"
           destroyOnClose
-        >
-          <div className="edit-row">Please enter the name of text here</div>
-          <div className="edit-row">
-            <Input
-              onChange={this.handelChange.bind(this)}
-              defaultValue={
-                propData.TextName === InitTextName ? "" : propData.TextName
-              }
-              placeholder="Please enter name"
-            />
-          </div>
-          <div className="edit-row">
-            <span>Must fill in</span>
-            <Switch
-              className="edit-switch"
-              checked={propData.IsMustFill}
-              onChange={this.switchChange.bind(this)}
-            />
-          </div>
-        </Modal>
+        />
+        <div className="edit-row">Please enter the name of text here</div>
+        <div className="edit-row">
+          <Input
+            onChange={this.handelChange.bind(this)}
+            defaultValue={
+              propData.TextName === InitTextName ? "" : propData.TextName
+            }
+            placeholder="Please enter name"
+          />
+        </div>
+        <div className="edit-row">
+          <span>Must fill in</span>
+          <Switch
+            className="edit-switch"
+            checked={propData.IsMustFill}
+            onChange={this.switchChange.bind(this)}
+          />
+        </div>
       </div>
     );
   }

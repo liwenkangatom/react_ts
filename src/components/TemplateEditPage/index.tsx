@@ -2,19 +2,25 @@ import React, { PureComponent } from "react";
 import Types from "MyTypes";
 import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
-import { Responsive, WidthProvider } from "react-grid-layout";
-import getEditContainer from "../EditContainer/index";
+import { Responsive, WidthProvider, Layout, Layouts } from "react-grid-layout";
+import ReactGridLayout from "react-grid-layout";
+import { getEditContainer } from "../EditContainer";
 import { TemplateTextControl, TemplateTextPropControl } from "../index";
-import { templateActions } from "../../features/templates";
+import { templateActions, templateSelectors } from "../../features/templates";
 import { Item } from "../../features/templates/models";
 
 import "./index.css";
 const ResponsiveReactGridLayout = WidthProvider(Responsive);
 
-const mapStateToProps = (state: Types.RootState) => ({
+const mapStateToProps = (
+  state: Types.RootState,
+  ownProps: { sectionKey: string }
+) => ({
   sections: state.template.sections,
   templateContext: state.template.templateContext,
-  items: state.template.items
+  items: templateSelectors.makeGetItemsBySectionKey(ownProps.sectionKey)(
+    state.template
+  )
 });
 
 const mapDispatchToProps = (dispatch: Dispatch<Types.RootAction>) =>
@@ -23,7 +29,8 @@ const mapDispatchToProps = (dispatch: Dispatch<Types.RootAction>) =>
       addSection: templateActions.addSection,
       deleteSection: templateActions.deleteSection,
       selectSection: templateActions.selectSection,
-      addItem: templateActions.addItem
+      addItem: templateActions.addItem,
+      moveItem: templateActions.deleteItem
     },
     dispatch
   );
@@ -41,26 +48,26 @@ type TemplateEditPageProps = ReturnType<typeof mapStateToProps> &
 export class TemplateEditPage extends PureComponent<TemplateEditPageProps> {
   static defaultProps = {
     className: "layout",
-    cols: { lg: 3, md: 8, sm: 6, xs: 1, xxs: 2 },
-    rowHeight: 40
+    rowHeight: 30,
+    onLayoutChange: function() {},
+    cols: { lg: 12, md: 10, sm: 6, xs: 4, xxs: 2 }
   };
   constructor(props: Readonly<TemplateEditPageProps>) {
     super(props);
     this.state = {
-      items: [0, 1, 2].map(function(i, key, list) {
-        return {
-          i: i.toString(),
-          x: i * 2,
-          y: 0,
-          w: 3,
-          h: 1,
-          type: "Text"
-        };
-      }),
-      newCounter: 0
+      // items: [0, 1, 2].map(function(i, key, list) {
+      //   return {
+      //     i: i.toString(),
+      //     x: i * 2,
+      //     y: 0,
+      //     w: 3,
+      //     h: 1,
+      //     type: "Text"
+      //   };
+      // }),
+      // newCounter: 0
     };
-    this.onAddItem = this.onAddItem.bind(this);
-    this.onBreakpointChange = this.onBreakpointChange.bind(this);
+    // this.onBreakpointChange = this.onBreakpointChange.bind(this);
   }
 
   createElement = (item: Item) => {
@@ -72,49 +79,24 @@ export class TemplateEditPage extends PureComponent<TemplateEditPageProps> {
     return (
       <div key={i} data-grid={item.positionData}>
         <EditContainer
-          deleteChild={() => this.onRemoveItem(i)}
           propData={item.propData}
+          itemKey={i}
+          moveItem={(itemKey: string) => {}}
         />
       </div>
     );
   };
 
-  // onAddItem() {
+  // We're using the cols coming back from this to calculate where to add new items.
+  // onBreakpointChange(breakpoint: string, cols: number) {
   //   this.setState({
-  //     // Add a new item. It must have a unique key!
-  //     items: this.state.items.concat({
-  //       i: "n" + this.state.newCounter,
-  //       x: this.state.items.length * 2 % (this.state.cols || 12),
-  //       y: Infinity, // puts it at the bottom
-  //       w: 3,
-  //       h: 1,
-  //       type: "Text"
-  //     }),
-  //     // Increment the counter to ensure key is always unique.
-  //     newCounter: this.state.newCounter + 1
+  //     breakpoint: breakpoint,
+  //     cols: cols
   //   });
   // }
 
-  // We're using the cols coming back from this to calculate where to add new items.
-  onBreakpointChange(breakpoint: string, cols: number) {
-    this.setState({
-      breakpoint: breakpoint,
-      cols: cols
-    });
-  }
-
-  onLayoutChange = layout => {
-    this.setState({ layout: layout });
-  };
-
-  onRemoveItem = i => {
-    console.log("removing", i);
-    const { sectionKey } = this.props;
-    this.props.DeleteItem({
-      key: i,
-      sectionKey
-    });
-    // this.setState({ items: _.reject(this.state.items, { i: i }) });
+  handleLayoutChange = (layout: Layout[]) => {
+    console.log("allLayouts", layout);
   };
 
   render() {
@@ -122,14 +104,18 @@ export class TemplateEditPage extends PureComponent<TemplateEditPageProps> {
     return (
       <div className={"templateEditPage"}>
         <ResponsiveReactGridLayout
-          onLayoutChange={this.onLayoutChange}
-          onBreakpointChange={this.onBreakpointChange}
-          draggableHandle={".dragHandler"}
-          {...this.props}
+          className="layout"
+          cols={{ lg: 12, md: 10, sm: 6, xs: 4, xxs: 1 }}
+          rowHeight={30}
+          onLayoutChange={this.handleLayoutChange}
         >
-          {items.map(item => this.createElement(item))}
+          {items.map(this.createElement)}
         </ResponsiveReactGridLayout>
       </div>
     );
   }
 }
+export const TemplateEditPageConnected = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(TemplateEditPage);

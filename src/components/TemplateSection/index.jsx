@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/anchor-has-content */
 import React, { Component } from "react";
-import { TemplateEditPage } from "../TemplateEditPage";
+import { TemplateEditPageConnected as TemplateEditPage } from "../TemplateEditPage";
 import "./index.css";
 export class TemplateSection extends Component {
   constructor(props) {

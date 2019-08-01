@@ -107,3 +107,7 @@
   box-sizing: border-box;
   cursor: se-resize;
 }
+
+.layout {
+  width: 100%;
+}
